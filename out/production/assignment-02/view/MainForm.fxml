@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane fx:id="mainFormContext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
+   <children>
+      <BorderPane layoutY="3.0" prefHeight="28.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#mnuNewOnAction" text="New" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuOpenOnAction" text="Open" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuSaveOnAction" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuPrintOnAction" text="Print" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuExitOnAction" text="Exit" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#mnuCutOnAction" text="Cut" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuCopyOnAction" text="Copy" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuPastOnAction" text="Past" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Select All" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#mnuAboutUsOnAction" text="About Us" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+      <AnchorPane layoutY="32.0" prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: #bdc3c7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="8.0" onMouseClicked="#newOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../lib/new-document(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="60.0" layoutY="8.0" onMousePressed="#saveOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../lib/download.png" />
+               </image></ImageView>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="107.0" layoutY="8.0" onMouseClicked="#openOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../lib/open-file.png" />
+               </image></ImageView>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="157.0" layoutY="8.0" onMouseClicked="#cutOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../lib/cut.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="205.0" layoutY="9.0" onMouseClicked="#copyOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../lib/copy.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="txtArea" layoutX="4.0" layoutY="80.0" onMousePressed="#saveOnAction" prefHeight="507.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0" />
+   </children>
+</AnchorPane>

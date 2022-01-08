@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="fileNameContext" prefHeight="152.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TextNameFormController">
+   <children>
+      <Label layoutX="85.0" layoutY="26.0" text="Input the File name">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInput" layoutX="31.0" layoutY="76.0" prefHeight="26.0" prefWidth="321.0" promptText="Input here" />
+      <Button layoutX="252.0" layoutY="112.0" mnemonicParsing="false" onAction="#EnterOnAction" text="Enter" />
+   </children>
+</AnchorPane>
