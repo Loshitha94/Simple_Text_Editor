@@ -274,14 +274,14 @@ public class MainFormController extends TextNameFormController{
     }
 
     public void replaceOnAction(ActionEvent actionEvent) {
-        Matcher matcher = Pattern.compile(txtReplace.getText()).matcher(txtArea.getText());
-      /*
-        if (matcher.find()){
-            matcher.rep
-        }*/
+        if (!txtArea.getSelectedText().isEmpty()){
+            IndexRange selection = txtArea.getSelection();
+            txtArea.replaceText(selection,txtReplace.getText());
+        }
     }
 
     public void replaceAllOnAction(ActionEvent actionEvent) {
+        txtArea.setText(Pattern.compile(txtSearchText.getText()).matcher(txtArea.getText()).replaceAll(txtReplace.getText()));
 
     }
 }
