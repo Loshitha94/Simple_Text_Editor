@@ -43,11 +43,24 @@ public class MainFormController extends TextNameFormController{
     public void initialize(){
         txtSearchText.textProperty().addListener((observable, oldValue, newValue) -> {
             textChange=true;
+
         });
 
         txtArea.textProperty().addListener((observable, oldValue, newValue) -> {
             textChange=true;
+
+
         });
+
+        txtArea.selectedTextProperty().addListener((observable, oldValue, newValue) -> {
+            Matcher matcher = Pattern.compile("[\\w-]+").matcher(txtArea.getSelectedText());
+            int count = 0;
+            while (matcher.find()){
+                count++;
+            }
+            lblSelectedWordCount.setText(String.valueOf(count));
+        });
+
     }
 
     public void mnuNewOnAction(ActionEvent actionEvent) throws IOException{
@@ -138,12 +151,15 @@ public class MainFormController extends TextNameFormController{
     }
     private String cutOrCopy;
     public void mnuCutOnAction(ActionEvent actionEvent) {
-        byte[] bytes = txtArea.getSelectedText().getBytes(StandardCharsets.UTF_8);
-        cutOrCopy = new String(bytes);
-        int caretPosition = txtArea.getCaretPosition();
-        txtArea.setText(txtArea.getText().replace(txtArea.getSelectedText(),""));
-        txtArea.positionCaret(caretPosition);
+        try {
+            byte[] bytes = txtArea.getSelectedText().getBytes(StandardCharsets.UTF_8);
+            cutOrCopy = new String(bytes);
+            int caretPosition = txtArea.getCaretPosition();
+            txtArea.setText(txtArea.getText().replace(txtArea.getSelectedText(),""));
+            txtArea.positionCaret(caretPosition);
+        }catch (Exception e){
 
+        }
     }
 
     public void mnuCopyOnAction(ActionEvent actionEvent) {
@@ -226,7 +242,11 @@ public class MainFormController extends TextNameFormController{
     }
 
     public void replaceOnAction(ActionEvent actionEvent) {
-
+        Matcher matcher = Pattern.compile(txtReplace.getText()).matcher(txtArea.getText());
+      /*
+        if (matcher.find()){
+            matcher.rep
+        }*/
     }
 
     public void replaceAllOnAction(ActionEvent actionEvent) {
