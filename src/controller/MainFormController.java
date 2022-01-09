@@ -36,31 +36,48 @@ public class MainFormController extends TextNameFormController{
     public Label lblSelectedWordCount;
     public Button btnReplaceAll;
     public JFXTextField txtReplace;
+    public Label lblSelectedFromCount;
     String PathForAll;
     private boolean textChange;
     private Matcher matcher;
+    int labelCounter;
 
     public void initialize(){
+        lblFoundedWordCount.setText("0");
+        lblSelectedFromCount.setText("0");
         txtSearchText.textProperty().addListener((observable, oldValue, newValue) -> {
             textChange=true;
-
+            labelCounter=0;
         });
 
         txtArea.textProperty().addListener((observable, oldValue, newValue) -> {
             textChange=true;
-
+            labelCounter=0;
 
         });
 
         txtArea.selectedTextProperty().addListener((observable, oldValue, newValue) -> {
-            Matcher matcher = Pattern.compile("[\\w-]+").matcher(txtArea.getSelectedText());
+            Matcher matcherCount = Pattern.compile("[\\w-]+").matcher(txtArea.getSelectedText());
             int count = 0;
-            while (matcher.find()){
+            while (matcherCount.find()){
                 count++;
             }
             lblSelectedWordCount.setText(String.valueOf(count));
+
         });
 
+    }
+
+ private int countingWords(Matcher m){
+            if (txtSearchText.getText().isEmpty()){
+                return 0;
+            }
+            int searchCount = 0;
+            while (m.find()){
+                searchCount++;
+            }
+            matcher.reset();
+            return searchCount;
     }
 
     public void mnuNewOnAction(ActionEvent actionEvent) throws IOException{
@@ -206,6 +223,7 @@ public class MainFormController extends TextNameFormController{
     }
 
     public void upOnAction(ActionEvent actionEvent) {
+
     }
 
     public void downOnAction(ActionEvent actionEvent) {
@@ -222,23 +240,37 @@ public class MainFormController extends TextNameFormController{
                 flags=flags|Pattern.LITERAL;
             }
             matcher = Pattern.compile(txtSearchText.getText(),flags).matcher(txtArea.getText());
+
+            lblFoundedWordCount.setText(String.valueOf(countingWords(matcher)));
             textChange=false;
         }
         if (matcher.find()){
             txtArea.selectRange(matcher.start(),matcher.end());
+            if (!txtSearchText.getText().isEmpty()){
+                ++labelCounter;
+                lblSelectedFromCount.setText(String.valueOf(labelCounter));
+            }else {
+                lblSelectedFromCount.setText("0");
+            }
         }else {
             matcher.reset();
+            labelCounter=0;
         }
     }
 
     public void caseSensitiveOnAction(ActionEvent actionEvent) {
         textChange=true;
+        labelCounter=0;
         btnDown.fire();
+
+
     }
 
     public void reGexOnAction(ActionEvent actionEvent) {
         textChange=true;
+        labelCounter=0;
         btnDown.fire();
+
     }
 
     public void replaceOnAction(ActionEvent actionEvent) {
@@ -250,5 +282,6 @@ public class MainFormController extends TextNameFormController{
     }
 
     public void replaceAllOnAction(ActionEvent actionEvent) {
+
     }
 }

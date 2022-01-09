@@ -76,12 +76,12 @@
                   <Image url="@../lib/copy.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnUp" layoutX="374.0" layoutY="4.0" mnemonicParsing="false" onAction="#upOnAction" prefHeight="25.0" prefWidth="25.0" text="⬆">
+            <Button fx:id="btnUp" layoutX="405.0" layoutY="3.0" mnemonicParsing="false" onAction="#upOnAction" prefHeight="25.0" prefWidth="25.0" text="⬆">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDown" layoutX="408.0" layoutY="4.0" mnemonicParsing="false" onAction="#downOnAction" prefHeight="25.0" prefWidth="25.0" text="⬇">
+            <Button fx:id="btnDown" layoutX="371.0" layoutY="3.0" mnemonicParsing="false" onAction="#downOnAction" prefHeight="25.0" prefWidth="25.0" text="⬇">
                <font>
                   <Font size="14.0" />
                </font>
@@ -113,22 +113,32 @@
       <TextArea fx:id="txtArea" layoutX="4.0" layoutY="106.0" onMousePressed="#saveOnAction" prefHeight="546.0" prefWidth="831.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0" />
       <AnchorPane layoutY="648.0" prefHeight="43.0" prefWidth="831.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="lblFoundedWordCount" layoutX="80.0" layoutY="12.0" prefHeight="20.0" prefWidth="51.0" text="2/2">
+            <Label fx:id="lblFoundedWordCount" layoutX="132.0" layoutY="11.0" prefHeight="20.0" prefWidth="20.0" text="2">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="582.0" layoutY="9.0" prefHeight="26.0" prefWidth="170.0" text="Selected word count:">
+            <Label layoutX="582.0" layoutY="11.0" prefHeight="26.0" prefWidth="170.0" text="Selected word count:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblSelectedWordCount" layoutX="759.0" layoutY="12.0" prefHeight="20.0" prefWidth="51.0" text="0">
+            <Label fx:id="lblSelectedWordCount" layoutX="759.0" layoutY="11.0" prefHeight="20.0" prefWidth="51.0" text="0">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="10.0" prefHeight="26.0" prefWidth="51.0" text="count:">
+            <Label layoutX="14.0" layoutY="9.0" prefHeight="26.0" prefWidth="51.0" text="count:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="104.0" layoutY="11.0" prefHeight="20.0" prefWidth="20.0" text="of">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSelectedFromCount" layoutX="67.0" layoutY="11.0" prefHeight="20.0" prefWidth="20.0" text="2">
                <font>
                   <Font size="15.0" />
                </font>
