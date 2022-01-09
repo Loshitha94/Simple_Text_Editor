@@ -19,11 +19,33 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainFormController extends TextNameFormController{
     public TextArea txtArea;
     public AnchorPane mainFormContext;
+    public TextField txtSearchText;
+    public Button btnUp;
+    public Button btnDown;
+    public ToggleButton btnCaseSensitive;
+    public ToggleButton btnRegex;
+    public Button btnReplace;
+    public Label lblFoundedWordCount;
+    public Label lblSelectedWordCount;
     String PathForAll;
+    private boolean textChange;
+    private Matcher matcher;
+
+    public void initialize(){
+        txtSearchText.textProperty().addListener((observable, oldValue, newValue) -> {
+            textChange=true;
+        });
+
+        txtArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            textChange=true;
+        });
+    }
 
     public void mnuNewOnAction(ActionEvent actionEvent) throws IOException{
         try {
@@ -154,11 +176,54 @@ public class MainFormController extends TextNameFormController{
         mnuOpenOnAction(new ActionEvent());
     }
 
+ // added methods------------------------------------------------------
+
     public void cutOnAction(MouseEvent mouseEvent) {
        mnuCutOnAction(new ActionEvent());
     }
 
     public void copyOnAction(MouseEvent mouseEvent) {
         mnuCopyOnAction(new ActionEvent());
+    }
+
+    public void upOnAction(ActionEvent actionEvent) {
+    }
+
+    public void downOnAction(ActionEvent actionEvent) {
+        txtArea.deselect();
+        if (textChange){
+            int flags=0;
+            if (!btnRegex.isSelected()){
+                flags=flags | Pattern.LITERAL;
+            }
+            if (!btnCaseSensitive.isSelected()){
+                flags=flags|Pattern.CASE_INSENSITIVE;
+            }
+            if (btnRegex.isSelected()){
+                flags=flags|Pattern.LITERAL;
+            }
+            matcher = Pattern.compile(txtSearchText.getText(),flags).matcher(txtArea.getText());
+            textChange=false;
+        }
+
+        if (matcher.find()){
+            txtArea.selectRange(matcher.start(),matcher.end());
+        }else {
+            matcher.reset();
+        }
+    }
+
+    public void caseSensitiveOnAction(ActionEvent actionEvent) {
+        textChange=true;
+        btnDown.fire();
+    }
+
+    public void reGexOnAction(ActionEvent actionEvent) {
+        textChange=true;
+        btnDown.fire();
+    }
+
+    public void replaceOnAction(ActionEvent actionEvent) {
+
     }
 }
