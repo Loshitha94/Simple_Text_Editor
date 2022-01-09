@@ -1,4 +1,5 @@
-#Simple Text Editor
+# Simple Text Editor
+
 A simple text editor with basic functionalities.  
 The main purpose of this project is learning java. 
 
