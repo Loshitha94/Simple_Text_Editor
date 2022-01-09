@@ -36,10 +36,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#mnuCopyOnAction" text="Copy" />
                         <MenuItem mnemonicParsing="false" onAction="#mnuPastOnAction" text="Past" />
                         <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Select All" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Find" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Find All" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Replace" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnuSelectAllOnAction" text="Replace All" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuFindOnAction" text="Find" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuFindAllOnAction" text="Find All" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuReplaceOnAction" text="Replace" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnuReplaceAllOnAction" text="Replace All" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">

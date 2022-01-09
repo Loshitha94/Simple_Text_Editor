@@ -263,25 +263,43 @@ public class MainFormController extends TextNameFormController{
         labelCounter=0;
         btnDown.fire();
 
-
     }
 
     public void reGexOnAction(ActionEvent actionEvent) {
         textChange=true;
         labelCounter=0;
         btnDown.fire();
-
     }
 
     public void replaceOnAction(ActionEvent actionEvent) {
-        if (!txtArea.getSelectedText().isEmpty()){
-            IndexRange selection = txtArea.getSelection();
-            txtArea.replaceText(selection,txtReplace.getText());
+        try {
+            if (!txtArea.getSelectedText().isEmpty()){
+                IndexRange selection = txtArea.getSelection();
+                txtArea.replaceText(selection,txtReplace.getText());
+            }
+        }catch (StringIndexOutOfBoundsException e){
+
         }
+
     }
 
     public void replaceAllOnAction(ActionEvent actionEvent) {
         txtArea.setText(Pattern.compile(txtSearchText.getText()).matcher(txtArea.getText()).replaceAll(txtReplace.getText()));
+    }
 
+    public void mnuFindOnAction(ActionEvent actionEvent) {
+        downOnAction(actionEvent);
+    }
+
+    public void mnuFindAllOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void mnuReplaceOnAction(ActionEvent actionEvent) {
+        replaceOnAction(actionEvent);
+    }
+
+    public void mnuReplaceAllOnAction(ActionEvent actionEvent) {
+        replaceAllOnAction(actionEvent);
     }
 }
