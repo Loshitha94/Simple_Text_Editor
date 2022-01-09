@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,6 +34,8 @@ public class MainFormController extends TextNameFormController{
     public Button btnReplace;
     public Label lblFoundedWordCount;
     public Label lblSelectedWordCount;
+    public Button btnReplaceAll;
+    public JFXTextField txtReplace;
     String PathForAll;
     private boolean textChange;
     private Matcher matcher;
@@ -199,13 +202,12 @@ public class MainFormController extends TextNameFormController{
             if (!btnCaseSensitive.isSelected()){
                 flags=flags|Pattern.CASE_INSENSITIVE;
             }
-            if (btnRegex.isSelected()){
+            if (!btnRegex.isSelected()){
                 flags=flags|Pattern.LITERAL;
             }
             matcher = Pattern.compile(txtSearchText.getText(),flags).matcher(txtArea.getText());
             textChange=false;
         }
-
         if (matcher.find()){
             txtArea.selectRange(matcher.start(),matcher.end());
         }else {
@@ -225,5 +227,8 @@ public class MainFormController extends TextNameFormController{
 
     public void replaceOnAction(ActionEvent actionEvent) {
 
+    }
+
+    public void replaceAllOnAction(ActionEvent actionEvent) {
     }
 }
