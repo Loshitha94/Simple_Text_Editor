@@ -1,6 +1,8 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -223,7 +225,10 @@ public class MainFormController extends TextNameFormController{
     }
 
     public void upOnAction(ActionEvent actionEvent) {
+        ObservableList range = FXCollections.observableArrayList();
+        while (!matcher.find()){
 
+        }
     }
 
     public void downOnAction(ActionEvent actionEvent) {
@@ -280,7 +285,6 @@ public class MainFormController extends TextNameFormController{
         }catch (StringIndexOutOfBoundsException e){
 
         }
-
     }
 
     public void replaceAllOnAction(ActionEvent actionEvent) {
